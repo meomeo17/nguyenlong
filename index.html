@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quà 20/10 của Nguyễn Long</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive;
+    background-color: #ffe4ec;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  h1 {
+    color: #d63384;
+    margin-top: 80px;
+  }
+  #buttons {
+    margin-top: 30px;
+    position: relative;
+  }
+  button {
+    font-size: 22px;
+    padding: 10px 25px;
+    margin: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #yes {
+    background-color: #ff69b4;
+    color: white;
+    position: absolute;
+    left: 35%;
+    top: 55%;
+  }
+  #no {
+    background-color: #ffb6c1;
+    color: white;
+  }
+  #message {
+    margin-top: 40px;
+    font-size: 26px;
+    color: #d63384;
+    display: none;
+    padding: 0 15px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bạn có muốn nhận quà 20/10 của mình không? 💝</h1>
+
+<div id="buttons">
+  <button id="yes">Có 💖</button>
+  <button id="no">Không 😜</button>
+</div>
+
+<p id="message">Chúc bạn 20/10 thật xinh đẹp, hạnh phúc và luôn được yêu thương hehe 💐💗</p>
+
+<script>
+  const yesBtn = document.getElementById('yes');
+  const noBtn = document.getElementById('no');
+  const msg = document.getElementById('message');
+
+  // Khi nhấn "Không" => hiện câu chúc
+  noBtn.addEventListener('click', () => {
+    msg.style.display = 'block';
+  });
+
+  // Khi chạm hoặc di vào "Có" => di chuyển trong khung hình
+  function moveButton() {
+    const btnWidth = yesBtn.offsetWidth;
+    const btnHeight = yesBtn.offsetHeight;
+
+    // Giới hạn để không bị trôi ra ngoài
+    const screenWidth = window.innerWidth - btnWidth - 20;
+    const screenHeight = window.innerHeight - btnHeight - 100; // chừa phần tiêu đề
+
+    const randomX = Math.random() * screenWidth;
+    const randomY = Math.random() * screenHeight + 80;
+
+    yesBtn.style.left = `${randomX}px`;
+    yesBtn.style.top = `${randomY}px`;
+  }
+
+  yesBtn.addEventListener('mouseenter', moveButton); // cho máy tính
+  yesBtn.addEventListener('touchstart', moveButton); // cho điện thoại
+</script>
+
+</body>
+</html>
